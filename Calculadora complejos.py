@@ -1,7 +1,7 @@
 import sys
   
 from math import atan as arcota,sin,cos
-import numpy as n
+##import numpy as n
 
 def suma(tuplaA,tuplaB):
     a1,b1,a2,b2 = tuplaA[0],tuplaA[1],tuplaB[0],tuplaB[1]
@@ -43,40 +43,11 @@ def cartesiana(tuplaA):
     lista.append(a)
     lista.append(b)
     tupla = tuple(lista)
-    return complex(tupla)
+    return tupla
 
 def fase(tuplaA):
     
     a1,b1 = tuplaA[0],tuplaA[1]
     angulo = arcota(b1/a1)
     return round(angulo,3)
-def main():
-    print("Escriba la primera tupla: ")
-    tuplaA = list(map(int,sys.stdin.readline().strip().split(",")))
-    print("Escriba la segunda tupla: ")
-    tuplaB = list(map(int,sys.stdin.readline().strip().split(",")))
-    tuplaA = tuple(tuplaA)
-    tuplaB = tuple(tuplaB)
-    print("La suma es: ",suma(tuplaA,tuplaB))
-    print("La resta es: ",resta(tuplaA,tuplaB))
-    print("La multiplicacion es: ",multiplicacion(tuplaA,tuplaB))
-    print("La division es: ", division(tuplaA,tuplaB))
 
-    print("El conjugado de la primera tupla es: " ,conjugado(tuplaA))
-    print("El conjugado de la segunda tupla es: ", conjugado(tuplaB))      
-    
-    print("El modulo de la primera tupla es: ", modulo(tuplaA))
-    print("El modulo de la segunda tupla es: ", modulo(tuplaB))
-
-    
-
-    print("La forma polar para la primera tupla es: ", polar(tuplaA))
-    print("La forma polar para la segunda tupla es: ", polar(tuplaB))
-
-    print("La forma cartesiana para la primera tupla es: ", cartesiana(polar(tuplaA)))
-    print("La forma cartesiana para la segunda tupla es: ", cartesiana(polar(tuplaB)))
-                                    
-    
-    print("La fase o direccion que tiene la primera tupla es:  ", fase(tuplaA))
-    print("La fase o direccion que tiene la segunda tupla es:  ", fase(tuplaA))
-main()
