@@ -1,5 +1,5 @@
 
-# Librería computación Cuántica 💥
+# Librería computación Cuántica :finnadie:
 
 ## Suma 
 
