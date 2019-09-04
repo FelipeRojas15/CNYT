@@ -40,7 +40,7 @@ def cartesiana(tuplaA):
     lista =[]
     modulo,direccion = tuplaA[0],tuplaA[1]
     a = modulo*cos(direccion)
-    b = sin(direccion)
+    b = modulo*sin(direccion)
     lista.append(a)
     lista.append(b)
     tupla = tuple(lista)
@@ -49,7 +49,7 @@ def cartesiana(tuplaA):
 def fase(tuplaA):
     
     a1,b1 = tuplaA[0],tuplaA[1]
-    angulo = arcota(b1/a1)
+    angulo = atan2(b1/a1)
     return round(angulo,3)
 
 def polarGrados(tupla):
@@ -131,11 +131,28 @@ def matrizConjugada(matriz):
 def matrizAdjunta(matriz):
     return matrizTranspuesta(matrizConjugada(matriz))
 
-#def multiplicacionMatrices(matrizA,matrizB):
+def multiplicacionMatrices(matrizA,matrizB):
+    filasB = len(matrizB)
+    columnasA = len(matrizA[0])
+    if filasB == columnasA:
+        filas = len(matrizA)
+        columnas = len(matrizB[0])
+        matriz = [[(0, 0)] * columnas for x in range(filas)]
+        for i in range(0, filas):
+            for j in range(0, columnas):
+                for k in range(0, len(matrizB)):
+                    m = multiplicacion(matrizA[i][k], matrizB[k][j])
+                    n = matriz[i][j]
+                    matriz[i][j] = (m[0]+n[0], m[1]+n[1])
+        return matriz
+    else:
+        
+        raise 'La multiplicación de matrices no está definida para estas matrices'
 
 
+#    #   #     PRUEBAS PARA INCORPORAR AL ARCHIVO .TEST
 
-
+"calculadora.sumaDeVectores([(8,3),(-1,-4),(0,-9)],[(8,-3),(2,5),(3,0)])"
 
 
 
