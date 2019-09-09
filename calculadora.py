@@ -5,13 +5,13 @@ from math import atan as arcota,sin,cos,pi,atan2
 
 def suma(tuplaA,tuplaB):
     a1,b1,a2,b2 = tuplaA[0],tuplaA[1],tuplaB[0],tuplaB[1]
-    return complex(float(a1+a2),float(b1+b2))
+    return (float(a1+a2),float(b1+b2))
 def resta(tuplaA,tuplaB):
     a1,b1,a2,b2 = tuplaA[0],tuplaA[1],tuplaB[0],tuplaB[1]
-    return complex(float(a1-a2),float(b1-b2))
+    return (float(a1-a2),float(b1-b2))
 def multiplicacion(tuplaA,tuplaB):
     a1,b1,a2,b2 = tuplaA[0],tuplaA[1],tuplaB[0],tuplaB[1]
-    return complex(float((a1*a2)-(b1*b2)),float((a1*b2)+(a2*b1)))
+    return (float((a1*a2)-(b1*b2)),float((a1*b2)+(a2*b1)))
 def division(tuplaA,tuplaB):
     
     a1,b1,a2,b2 = tuplaA[0],tuplaA[1],tuplaB[0],tuplaB[1]
@@ -71,7 +71,7 @@ def sumaDeVectores(vectorA,vectorB):
         sumax.append(suma(vectorA[i],vectorB[i]))
     return sumax
 
-def restaaDeVectores(vectorA,vectorB):
+def restaDeVectores(vectorA,vectorB):
     if len(vectorA) != len(vectorB):
         return "Suma invalida"
     restax = []
@@ -84,7 +84,7 @@ def restaaDeVectores(vectorA,vectorB):
 def multiplicacionVectorEscalar(vector,escalar):
     result =[]
     for i in range(len(vector)):
-        result.append(multiplicacion(vector[i],(escalar,0)))
+        result.append(multiplicacion(vector[i],(escalar)))
     return result
 
 def sumaMatrices(matrizA,matrizB):
@@ -105,8 +105,8 @@ def restaMatrices(matrizA,matrizB):
 
 def multiplicacionMatrizEscalar(matrizA,vector):
     result =[]
-    for i in range(len(vector)):
-        result.append(multiplicacionVectorEscalar(matrizA[i], escalar))
+    for i in range(len(matrizA)):
+        result.append(multiplicacionVectorEscalar(matrizA[i], vector))
     return result
 
 def matrizTranspuesta(matriz):
@@ -123,8 +123,8 @@ def matrizConjugada(matriz):
     for i in range(len(matriz)):
         fila = []
         for j in range(len(matriz[0])):
-            fila.append(matriz[i][j])
-        conjugada.append(conjugado(fila))
+            fila.append(conjugado(matriz[i][j]))
+        conjugada.append(fila)
     return conjugada
 
 
@@ -148,8 +148,69 @@ def multiplicacionMatrices(matrizA,matrizB):
     else:
         
         raise 'La multiplicación de matrices no está definida para estas matrices'
+def productoInternoVectores(vector1,vector2):
+    if len(vector1) != len(vector2):
+        raise 'Los vectores no tienen la misma longitud, su producto interno no esta definido'
+    aux = (0,0)
+    for i in range(len(vector1)): 
+        aux = suma(aux,multiplicacion(vector1[i],vector2[i]))
+    return aux;
 
 
+
+
+
+def moduloVector(vector):
+    aux = 0
+    for i in vector:
+        aux += modulo(i)**2
+    return round(aux**0.5,2)
+
+
+
+
+def distanciaEntreVectores(vector1,vector2):
+    if len(vector1) != len(vector2):
+        raise 'Los vectores no tienen la misma longitud, su producto interno no esta definido'
+    return moduloVector(restaDeVectores(vector1,vector2))
+
+
+
+        
+def esHermitiana(matriz):
+    if len(matriz) != len(matriz[0]):
+        raise 'False'
+    return matriz == matrizAdjunta(matriz)
+
+
+
+
+def esUnitaria(matriz):
+    if len(matriz) != len(matriz[0]):  raise 'False'
+    i = [[(float(0),float(0)) for w in range(len(matriz))]for j in range(len(matriz))]
+    for k in range(len(i)):
+        i[k][k] = (float(1),float(0))
+    return multiplicacionMatrices(matriz,matrizAdjunta(matriz)) == multiplicacionMatrices(matrizAdjunta(matriz),matriz) == i
+
+
+
+
+def productoTensor(matriz1,matriz2):
+    aux = []
+    subLista = []
+    conta = len(matriz2)
+    for i in matriz1:
+        valorB = 0
+        valorA = 0
+        while valorA < conta:
+            for num1 in i:
+                for num2 in matriz2[valorB]:
+                    subLista.append(multiplicacion(num1,num2))
+            aux.append(subLista)
+            subLista = []
+            valorA +=1
+            valorB += 1
+    return aux
 #    #   #     PRUEBAS PARA INCORPORAR AL ARCHIVO .TEST
 
 "calculadora.sumaDeVectores([(8,3),(-1,-4),(0,-9)],[(8,-3),(2,5),(3,0)])"
