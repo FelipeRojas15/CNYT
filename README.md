@@ -1,9 +1,10 @@
 
 # Curso CNYT Ciencias naturales y tecnología 
-_2153043_
-_calculadora_
-_9/09/2019_
-_Brayan Felipe Rojas Bermal_
+>
+* _2153043_
+* _calculadora_
+* _9/09/2019_
+* _Brayan Felipe Rojas Bermal_
 
 ## Contenido
 >
