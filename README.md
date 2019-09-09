@@ -85,17 +85,18 @@ _Si desea utilizar la calculadora debe seguir los siguientes pasos en el SHELL_
 import calculadora 
 ~~~
 _Despues Tener claro que se desea utilizar teniendo en cuenta los nombres de las funciones en el archivo calculadora. Para este caso quiero saber cual es la Matriz Adjunta de la siguiente matriz_
-**Definimos los casos: 
+
+### Definimos los casos: 
 ~~~
 matriz=[[(7,7),(3,8),(8,4)],[(5,0),(8,-6),(-10,-1)]]
 ~~~
-***Implementamos la calculadora: 
+### Implementamos la calculadora: 
 ~~~
 calculadora.matrizAdjunta(matriz)
 ~~~
-***Resultado final es: 
+### Resultado final es: 
 ~~~
 [[(7,-7),(5,0)],[(3,-8),(8,6)],[(8,-4),(-10,1)]]
 ~~~
-## 
+##
 > Definiciones sacadas de: [Numeros complejos ](https://www.ditutor.com/numeros_complejos/numeros_complejos.html)
