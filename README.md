@@ -17,6 +17,23 @@ _Brayan Felipe Rojas Bermal_
 * Cartesiana 
 * Fase 
 * Polar a Grados 
+* Suma de Vectores
+* Resta de vectores 
+* Multiplicacion de Vectores por un Escalar 
+* Suma de Matrices 
+* Resta de Matrices 
+* Multiplicacion Matriz por Escalar 
+* Matriz Transpuesta
+* Matriz Conjugada
+* Matriz Adjunta 
+* Multiplicacion de Matrices 
+* Producto Interno de Vectores 
+* Modulo de un Vector
+* Distancia entre Vectores 
+* Matriz Hermitania
+* Matriz Unitaria 
+* Producto Tensor 
+
 ## Suma 
 
 _La **suma de números complejos** se realiza sumando partes reales entre sí y partes imaginarias entre sí._
@@ -47,17 +64,38 @@ _Se llama **módulo** de un número complejo _z_ = (_a_,_b_) a la distancia del 
 
 
 
-## Conjugado 
+## Pruebas 
 
-_El conjugado de un numero complejo se obtiene por simetría del lado respecto del eje de las abscisas._
-_Representando el número complejo _a+ bi_ y haciendo la correspondiente simetría, se tiene que su conjugado es _a - bi_ ._
+Para las pruebas se pudo probar distintas funciones del codigo que garantiza su correcta funcionalidad. Los metodos que se colocaron a prueba fueron los siguientes:
+> 
+* Suma de vectores complejos 
+* Multiplicacion vector por escalar 
+* suma de matrices complejas 
+* Multiplicacion de matriz por escalar 
+* Matriz transpuesta 
+* Matriz conjugada 
+* Matriz Adjunta 
+* Entre otras * 
+### Para compilar las pruebas 
+_El Archivo de calculadoraTest.py debe estar en la misma carpeta de calculadora.py._
 
-## Conversión de polar a cartesiano 
-
-## Conversión de cartesiano a polar 
-
-## La fase 
-
-
+### Uso de la calculadora
+_Si desea utilizar la calculadora debe seguir los siguientes pasos en el SHELL_
+~~~
+import calculadora 
+~~~
+_Despues Tener claro que se desea utilizar teniendo en cuenta los nombres de las funciones en el archivo calculadora. Para este caso quiero saber cual es la Matriz Adjunta de la siguiente matriz_
+**Definimos los casos: 
+~~~
+matriz=[[(7,7),(3,8),(8,4)],[(5,0),(8,-6),(-10,-1)]]
+~~~
+***Implementamos la calculadora: 
+~~~
+calculadora.matrizAdjunta(matriz)
+~~~
+***Resultado final es: 
+~~~
+[[(7,-7),(5,0)],[(3,-8),(8,6)],[(8,-4),(-10,1)]]
+~~~
 ## 
 > Definiciones sacadas de: [Numeros complejos ](https://www.ditutor.com/numeros_complejos/numeros_complejos.html)
