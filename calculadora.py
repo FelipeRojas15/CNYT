@@ -146,8 +146,21 @@ def multiplicacionMatrices(matrizA,matrizB):
                     matriz[i][j] = (m[0]+n[0], m[1]+n[1])
         return matriz
     else:
-        
         raise 'La multiplicación de matrices no está definida para estas matrices'
+def multiplicacionMatricesNormales(matriz1,matriz2):
+    '''Entran 2 matrices, una de M x I, la otra de I X N, retorna
+        la multiplicacion de lamatriz1 por la matriz 2 de dimension M X N'''
+    if (len(matriz1) != len(matriz2[0])): raise 'La multiplicación de matrices no está definida para estas matrices'
+    aux = []
+    for i in range(len(matriz1[0])):
+        aux.append( [None] * len(matriz2))
+    for i in range(len(matriz1[0])):
+        for j in range(len(matriz2)):
+            summ = 0
+            for k in range(len(matriz2[0])):
+                summ += matriz1[i][k][0]*matriz2[j][k]
+            aux[i][j] = summ
+    return aux
 def productoInternoVectores(vector1,vector2):
     if len(vector1) != len(vector2):
         raise 'Los vectores no tienen la misma longitud, su producto interno no esta definido'
@@ -214,6 +227,48 @@ def productoTensor(matriz1,matriz2):
 #    #   #     PRUEBAS PARA INCORPORAR AL ARCHIVO .TEST
 
 "calculadora.sumaDeVectores([(8,3),(-1,-4),(0,-9)],[(8,-3),(2,5),(3,0)])"
+
+
+def marbels(matrizAdj, estadoInicial, clicks):
+    '''Se simula el experimento de  las canicas despues de varios clicks'''
+    while clicks > 0:
+        clicks -= 1
+        aux = []
+        for i in range(len(matrizAdj)):
+            sume = (0,0)
+            for j in range(len(estadoInicial)):
+               sume = suma(sume,multiplicacion(estadoInicial[j],matrizAdj[i][j]))
+            aux.append(sume)
+        estadoInicial  = aux
+    return aux
+
+
+
+def barras(matrizAdj, estadoInicial, clicks):
+    '''Se simula el experimento de  barra con una cantidad de clicks'''
+    while clicks > 0:
+        clicks -= 1
+        aux = []
+        for i in range(len(matrizAdj)):
+            sume = (0,0)
+            for j in range(len(estadoInicial)):
+               sume = suma(sume,multiplicacion(estadoInicial[j],matrizAdj[i][j]))
+            aux.append(sume)
+        estadoInicial  = aux
+    return aux
+
+
+
+def dobleRendija(matriz,clicks):
+    '''Se realiza el esperimento de la doble rendija'''
+    for i in range(len(matriz)):
+        for j in range(len(matriz[0])):
+            for x in range(clicks):
+                matriz[i][j] = multiplicacion(matriz[i][j],matriz[i][j])
+            matriz[i][j] = modulo(matriz[i][j])
+    return matriz
+
+
 
 
 
