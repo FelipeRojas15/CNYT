@@ -1,5 +1,6 @@
 import sys
-  
+import numpy as np
+import matplotlib.pyplot as plt
 from math import atan as arcota,sin,cos,pi,atan2
 ##import numpy as n
 
@@ -240,26 +241,34 @@ def marbels(matrizAdj, estadoInicial, clicks):
                sume = suma(sume,multiplicacion(estadoInicial[j],matrizAdj[i][j]))
             aux.append(sume)
         estadoInicial  = aux
+    labels = [  'Pto. '+ str(i) for i in range(len(matrizAdj))]
+    estado = [ c[0] for c in estadoInicial]
+    index = np.arange(len(labels))
+    plt.bar(index, estado)
+    plt.xlabel('Estados')
+    plt.ylabel('Valores')
+    plt.xticks(index, labels, rotation=30)
+    plt.title('Evolucion del sistema')
+    plt.show()
     return aux
 
 
 
-def barras(matrizAdj, estadoInicial, clicks):
-    '''Se simula el experimento de  barra con una cantidad de clicks'''
-    while clicks > 0:
-        clicks -= 1
-        aux = []
-        for i in range(len(matrizAdj)):
-            sume = (0,0)
-            for j in range(len(estadoInicial)):
-               sume = suma(sume,multiplicacion(estadoInicial[j],matrizAdj[i][j]))
-            aux.append(sume)
-        estadoInicial  = aux
-    return aux
 
+
+def ensamble(sistemaA, estadoA, sistemaB, estadoB, clicks):
+    '''Ensamble de dos sistemas'''
+    
+    sistema = productoTensor(sistemaA, sistemaB)
+   
+    estados = productoTensor([estadoA], [estadoB])
+   
+    return marbels(sistema, estados[0], clicks)
+    
 
 
 def dobleRendija(matriz,clicks):
+    
     '''Se realiza el esperimento de la doble rendija'''
     for i in range(len(matriz)):
         for j in range(len(matriz[0])):
