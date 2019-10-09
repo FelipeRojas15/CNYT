@@ -1,6 +1,6 @@
 import sys
-import numpy as np
-import matplotlib.pyplot as plt
+#import numpy as np
+#import matplotlib.pyplot as plt
 from math import atan as arcota,sin,cos,pi,atan2
 ##import numpy as n
 
@@ -241,6 +241,7 @@ def marbels(matrizAdj, estadoInicial, clicks):
                sume = suma(sume,multiplicacion(estadoInicial[j],matrizAdj[i][j]))
             aux.append(sume)
         estadoInicial  = aux
+        '''
     labels = [  'Pto. '+ str(i) for i in range(len(matrizAdj))]
     estado = [ c[0] for c in estadoInicial]
     index = np.arange(len(labels))
@@ -249,7 +250,7 @@ def marbels(matrizAdj, estadoInicial, clicks):
     plt.ylabel('Valores')
     plt.xticks(index, labels, rotation=30)
     plt.title('Evolucion del sistema')
-    plt.show()
+    plt.show()'''
     return aux
 
 
@@ -267,15 +268,23 @@ def ensamble(sistemaA, estadoA, sistemaB, estadoB, clicks):
     
 
 
-def dobleRendija(matriz,clicks):
+def doble_rendija(num_rendijas, num_blancos_pared, vector_probabilidad):
+    '''Realiza el experimento de rendijas multiples con probabilidad ajustable'''
     
-    '''Se realiza el esperimento de la doble rendija'''
-    for i in range(len(matriz)):
-        for j in range(len(matriz[0])):
-            for x in range(clicks):
-                matriz[i][j] = multiplicacion(matriz[i][j],matriz[i][j])
-            matriz[i][j] = modulo(matriz[i][j])
-    return matriz
+    num_paredes = num_rendijas + 1
+    num_nodos = 2 * num_rendijas + num_paredes * num_blancos_pared + 1
+    num_blancos_rendija = len(vector_probabilidad)
+    matriz_sistema = [[(0, 0) for j in range(num_nodos)]for i in range(num_nodos)]
+    posicion = 0
+    for i in range(1, num_rendijas + 1):
+        matriz_sistema[i][0][0] = 1/(num_rendijas**(1/2))
+        posicion = i
+    for i in range(1, num_rendijas + 1):
+        for j in range(posicion, posicion + num_blancos_rendija + 1):
+            matriz_sistema[j][i] = vector_probabilidad[i-1]
+            
+        
+    return matriz_sistema
 
 
 
