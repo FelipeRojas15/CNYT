@@ -139,6 +139,7 @@ calculadora.matrizAdjunta(matriz)
 
 
 ```
+![Resultado de la prueba ](https://i.ibb.co/StnBWmD/Capture2.png)
 ### PRUEBA ENSAMBLE
 ```
 def test_ensamble(self):
@@ -154,6 +155,8 @@ def test_ensamble(self):
         x = calculadora.ensamble(MA,VA,MB,VB,5)
         self.assertEqual(x,[(0.06854114583333333, 0.0), (0.08497952546296297, 0.0), (0.09477932870370372, 0.0), (0.06920364583333334, 0.0), (0.08580091435185187, 0.0), (0.09569543981481482, 0.0), (0.06930522916666668, 0.0), (0.08592686064814815, 0.0), (0.0958359101851852, 0.0), (0.06899164583333334, 0.0), (0.08553806990740741, 0.0), (0.09540228425925927, 0.0)])
 ```
+![Resultado de la prueba ](https://i.ibb.co/Yky3Rmz/Capture3.png)
+
 ### PRUEBA DOBLE RENDIJA
 ```
 def test_doble_rendija(self):
