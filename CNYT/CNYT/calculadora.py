@@ -270,13 +270,14 @@ def ensamble(sistemaA, estadoA, sistemaB, estadoB, clicks):
 
 def doble_rendija(num_rendijas, num_blancos_pared, vector_probabilidad):
     '''Realiza el experimento de rendijas multiples con probabilidad ajustable'''
-
+    
     num_paredes = num_rendijas + 1
     num_nodos = 2 * num_rendijas + num_paredes * num_blancos_pared + 1
     num_blancos_rendija = len(vector_probabilidad)
     matriz_sistema = [[[0, 0] for j in range(num_nodos)]for i in range(num_nodos)]
     posicion = 0
     for i in range(1, num_rendijas + 1):
+        
         matriz_sistema[i][0][0] = 1/(num_rendijas**(1/2))
         posicion = i
     for i in range(1, num_rendijas + 1):
@@ -285,6 +286,9 @@ def doble_rendija(num_rendijas, num_blancos_pared, vector_probabilidad):
             
         
     return matriz_sistema
+
+
+
 
 
 
