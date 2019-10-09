@@ -100,6 +100,6 @@ calculadora.matrizAdjunta(matriz)
 [[(7,-7),(5,0)],[(3,-8),(8,6)],[(8,-4),(-10,1)]]
 ~~~
 ## CLASICO A LO CUANTICO 
-*Para esta ocación se trabajarón con 3 experimentos. El primero de ellos se llama marbles  que consiste en simular el experimento de las canicas despues de varios clicks. Para el segundo experimento se llama _Ensable_ y es el ensanble de dos sistemas teniendo en cuenta cierto numero de clicks y para el tercer experimento tenemos el de la doble rendija con probabilidades ajustables * 
+* Para esta ocación se trabajarón con 3 experimentos. El primero de ellos se llama marbles  que consiste en simular el experimento de las canicas despues de varios clicks. Para el segundo experimento se llama _Ensable_ y es el ensanble de dos sistemas teniendo en cuenta cierto numero de clicks y para el tercer experimento tenemos el de la doble rendija con probabilidades ajustables  
 
 Definiciones sacadas de: [Numeros complejos ](https://www.ditutor.com/numeros_complejos/numeros_complejos.html)
