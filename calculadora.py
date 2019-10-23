@@ -1,8 +1,8 @@
 import sys
-#import numpy as np
-#import matplotlib.pyplot as plt
-from math import atan as arcota,sin,cos,pi,atan2
-##import numpy as n
+import numpy as np
+import matplotlib.pyplot as plt
+from math import atan as arcota,sin,cos,pi,atan2,sqrt
+#import numpy as n
 
 def suma(tuplaA,tuplaB):
     a1,b1,a2,b2 = tuplaA[0],tuplaA[1],tuplaB[0],tuplaB[1]
@@ -23,9 +23,15 @@ def division(tuplaA,tuplaB):
 def conjugado(tuplaA):
     a1,b1 = tuplaA[0],tuplaA[1]
     return float(a1),float(b1*-1)
-def modulo(tuplaA):
-    a1,b1 = tuplaA[0],tuplaA[1]
-    return float((a1**2+b1**2)**0.5)
+def modulo(c1):
+    '''Esta función realiza el módulo de un número complejo c1 en notación rectangular.
+       a: Parte Real
+       b: Parte Imaginaria
+       m: Módulo Real+
+       |c1| --> m '''
+    
+    a, b = c1
+    return sqrt(a**2 + b**2)
 def polar(tuplaA):
     lista = []
     a1,b1 = tuplaA[0],tuplaA[1]
@@ -173,20 +179,18 @@ def productoInternoVectores(vector1,vector2):
 
 
 
-
-def moduloVector(vector):
-    aux = 0
-    for i in vector:
-        aux += modulo(i)**2
-    return round(aux**0.5,2)
-
-
+def modulo_vector(V):
+    '''Retorna el Modulo de un vector V complejo'''
+    sumatoria = 0
+    for complejo in V:
+        sumatoria += modulo(complejo)**2
+    return (sumatoria**0.5)
 
 
 def distanciaEntreVectores(vector1,vector2):
     if len(vector1) != len(vector2):
         raise 'Los vectores no tienen la misma longitud, su producto interno no esta definido'
-    return moduloVector(restaDeVectores(vector1,vector2))
+    return modulo_vector(restaDeVectores(vector1,vector2))
 
 
 
@@ -241,7 +245,7 @@ def marbels(matrizAdj, estadoInicial, clicks):
                sume = suma(sume,multiplicacion(estadoInicial[j],matrizAdj[i][j]))
             aux.append(sume)
         estadoInicial  = aux
-        '''
+        
     labels = [  'Pto. '+ str(i) for i in range(len(matrizAdj))]
     estado = [ c[0] for c in estadoInicial]
     index = np.arange(len(labels))
@@ -250,7 +254,7 @@ def marbels(matrizAdj, estadoInicial, clicks):
     plt.ylabel('Valores')
     plt.xticks(index, labels, rotation=30)
     plt.title('Evolucion del sistema')
-    plt.show()'''
+    plt.show()
     return aux
 
 
@@ -285,6 +289,32 @@ def doble_rendija(num_rendijas, num_blancos_pared, vector_probabilidad):
             
         
     return matriz_sistema
+
+
+def particulaRecta(n, vi):
+    """
+    Retorna un vector de probabilidades P.
+    Parametros:
+        n: Número de puntos sobre la recta.
+        vi: Vector de estado inicial.
+    """
+    P = [0 for i in range(n)]
+    modulo_v = modulo_vector(vi)
+    for i in range(n):
+        P[i] = round((modulo(vi[i])/modulo_v)**2, 4)
+    
+    #Graficación de resultados
+    """
+    labels = [  'Pto. '+ str(i) for i in range(len(P))]
+    estado = [ c[0] for c in P ]
+    index = np.arange(len(labels))
+    plt.bar(index, estado)
+    plt.xlabel('Estados')
+    plt.ylabel('Valores')
+    plt.xticks(index, labels, rotation=30)
+    plt.title('Evolucion del sistema')
+    plt.show()"""
+    return P
 
 
 

@@ -19,11 +19,18 @@ class TestStringMethods(unittest.TestCase):
         #Ejemplo 4
         matrizA = [[(-8,-3),(-6,-4),(0,-4)],[(-1,8),(6,-10),(8,-5)],[(4,0),(8,5),(-7,-9)]]
         matrizB = [[(-7,-2),(-4,-2),(7,7)],[(5,9),(0,3),(6,-5)],[(1,5),(-6,-6),(5,8)]]
-        resultado = [[(-15.0, -5.0), (-10.0, -6.0), (7.0, 3.0)], [(4.0, 17.0), (6.0, -7.0), (14.0, -10.0)], [(5.0, 5.0), (2.0, -1.0), (-2.0, -1.0)]]
-        self.assertEqual(calculadora.sumaMatrices(matrizA,matrizB),resultado)
+        #self.assertEqual(calculadora.sumaMatrices(matrizA,matrizB),resultado)
 
         
+    def test_productoTensorMatriz(self):
+        #Ejemplo 6
+        matrizA=[[(0,0),(1,0)],[(1,0),(0,0)]]
+        matrizB=[[(1,0),(0,0),(0,0),(0,0)],[(0,0),(1,0),(1,0),(1,0)]]
         
+
+       # self.assertEqual(calculadora.multiplicacionMatrizEscalar(matrizA,escalar),[[(0.0, 13.0), (-4.0, 32.0)], [(22.0, 32.0), (28.0, 10.0)]])
+        
+          
     def test_multiplicacionMatrizEscalar(self):
         #Ejemplo 6
         matrizA=[[(3,-2),(8,-4)],[(4,-10),(-2,-8)]]
@@ -31,6 +38,9 @@ class TestStringMethods(unittest.TestCase):
         resultado = [[(0,13),(-4,32)],[(22,32),(28,10)]]
         self.assertEqual(calculadora.multiplicacionMatrizEscalar(matrizA,escalar),[[(0.0, 13.0), (-4.0, 32.0)], [(22.0, 32.0), (28.0, 10.0)]])
         
+    def test_multiplicacionMatrices(self):
+        matrizA= [[(0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (1.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0)], [(0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (1.0, 0.0), (1.0, 0.0), (1.0, 0.0)], [(1.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0)], [(0.0, 0.0), (1.0, 0.0), (1.0, 0.0), (1.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0)]]
+        matrizB=[[(0,0),(0,0),(0,0),(1,0)],[(1,0),(1,0),(1,0),(0,0)]]
         
     def test_matrizTranspuesta(self):
         #Ejemplo 7
@@ -70,7 +80,7 @@ class TestStringMethods(unittest.TestCase):
         vector3 = [(9,-7),(-1,-6)]
         vector4 = [(7,-8),(5,-9)]
         
-        self.assertEqual(calculadora.distanciaEntreVectores(vector3,vector4),7.07)
+        self.assertEqual(calculadora.distanciaEntreVectores(vector3,vector4),7.0710678118654755)
 
     
     def test_canicas(self):
@@ -122,13 +132,24 @@ class TestStringMethods(unittest.TestCase):
         VB = [(0.7,0),(0.15,0),(0.15,0)]
         x = calculadora.ensamble(MA,VA,MB,VB,5)
         self.assertEqual(x,[(0.06854114583333333, 0.0), (0.08497952546296297, 0.0), (0.09477932870370372, 0.0), (0.06920364583333334, 0.0), (0.08580091435185187, 0.0), (0.09569543981481482, 0.0), (0.06930522916666668, 0.0), (0.08592686064814815, 0.0), (0.0958359101851852, 0.0), (0.06899164583333334, 0.0), (0.08553806990740741, 0.0), (0.09540228425925927, 0.0)])
-    def test_doble_rendija(self):
-        num_rendijas = 2
-        num_blancas_pared = 5
-        vector_amplitud = [(1/(22)**0.5,1/(22)**0.5),(-1/(22)**0.5,-1/(22)**0.5),(-1/(22)**0.5,1/(22)**0.5),(-1/(22)**0.5,-1/(22)**0.5),(1/(22)**0.5,-1/(22)**0.5),(-1/(22)**0.5,-1/(22)**0.5),(-1/(22)**0.5,-1/(22)**0.5),(-1/(22)**0.5,-1/(22)**0.5),(1/(22)**0.5,-1/(22)**0.5),(1/(22)**0.5,-1/(22)**0.5),(-1/(22)**0.5,1/(22)**0.5)]
-        x = calculadora.doble_rendija(num_rendijas,num_blancas_pared,vector_amplitud)
-
-        print(x)
-
+    def test_particulaRecta(self):
+        n = 10
+        vi = [(2,-1), (-1.5, 2.5), (-3.5, 5), (-4,6), (-3.5, 2.5), (0,0), (-3.5, 2.5), (6,-4), (0, 2.5), (-1, 1)]
+        self.assertEqual(calculadora.particulaRecta(n,vi),[0.025, 0.0425, 0.1862, 0.26, 0.0925, 0.0, 0.0925, 0.26, 0.0312, 0.01])
 if __name__ == '__main__':
     unittest.main()
+
+
+
+"""
+[[(0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (1.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0)],
+[(0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (1.0, 0.0), (1.0, 0.0), (1.0, 0.0)],
+[(1.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0)],
+[(0.0, 0.0), (1.0, 0.0), (1.0, 0.0), (1.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0), (0.0, 0.0)]]
+
+
+
+
+
+
+"""
