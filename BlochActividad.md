@@ -122,4 +122,4 @@ ax.set_zlabel('Eje Z')
 
 plt.show()
 ```
-imagen
+![Esfera con ciudades del mundo](https://raw.githubusercontent.com/FelipeRojas15/CNYT/master/img/EsferaCiudades.PNG)
